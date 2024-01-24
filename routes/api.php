@@ -23,9 +23,7 @@ Route::middleware(middleware: 'auth:sanctum')->get(uri:'/blog',function
 */
 
 
-Route::post('login',[AuthController::class, 'login']);
-Route::post('register',[AuthController::class, 'register']);
-Route::post('logout',[AuthController::class, ''])->middleware('auth:sanctum');
+
 
 
 /*  cookie fayillar ucun
@@ -34,8 +32,16 @@ Route::post('register',[AuthSessionController::class, 'register']);
 Route::post('logout',[AuthSessionController::class, ''])->middleware('auth:sanctum');
 */
 
+Route::post('login',[AuthController::class, 'login']);
+Route::post('register',[AuthController::class, 'register']);
+Route::post('logout',[AuthController::class, ''])->middleware('auth:sanctum');
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+
+
 });
+
 Route::apiResource('blog',BlogController::class );
 Route::apiResource('news',NewsController::class );
+

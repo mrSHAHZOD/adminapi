@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -12,21 +13,24 @@ class AuthController extends Controller
 {
     public function login(Request $request): Response
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $attemp = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
-        $user = User::where('email', $request->email)->first();
+        if ($attemp) {
+            $user = Auth::user();  
 
-        if (!$user || !Hash::check($request->password, optional($user)->password)) {
-            return response(['error' => 'The provided credentials are incorrect.'], 401);
+            return response()->json([
+                'success' => true,
+                'message' => 'User Login successfully',
+                'token' => $user->createToken('LaravelSanctumAuth')->plainTextToken,
+                'token_type' => 'Bearer',
+                'user' => $user
+            ]);
         }
-
-        return response([
-            'token' => $user->createToken($user->name)->plainTextToken
-        ]);
+        else {
+            return  response()->json('Unauthorised.', ['error' => 'Unauthorised', 'request' => $attemp]);
+        }
     }
+
 
 
     public function register(Request $request): Response
@@ -42,12 +46,13 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-   
+
         $token = $user->createToken($user->name)->plainTextToken;
         return response([
             'user' => $user,
             'token' => $token,
         ]);
+
     }
 
 
@@ -59,3 +64,4 @@ class AuthController extends Controller
 }
 
 }
+
