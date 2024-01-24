@@ -19,16 +19,17 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-     if (!$user || !Hash::check($request->password, $user->password)) {
-            return response(['The provided credentials are incorrect.']);
+        if (!$user || !Hash::check($request->password, optional($user)->password)) {
+            return response(['error' => 'The provided credentials are incorrect.'], 401);
         }
 
         return response([
-            'token' =>$user->createToken($user->name)->plainTextToken
-        ]) ;
+            'token' => $user->createToken($user->name)->plainTextToken
+        ]);
     }
 
-    public function register(Request $request):Response
+
+    public function register(Request $request): Response
     {
         $request->validate([
             'name' => 'required|max:255',
@@ -36,27 +37,25 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $user = User::created([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
+   
         $token = $user->createToken($user->name)->plainTextToken;
-
         return response([
             'user' => $user,
             'token' => $token,
         ]);
     }
 
-    public  function logout(Request $request): Response
-    {
-        $request->user()->currentAccessToken()->delete();
 
-        return  response([
-            'loved out'
-        ]);
+    public function logout(Request $request): Response
+{
+    $request->user()->currentAccessToken()->delete();
 
-    }
+    return response(['message' => 'Logged out successfully']);
+}
+
 }
