@@ -11,26 +11,26 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    public function login(Request $request): Response
-    {
-        $attemp = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
-
-        if ($attemp) {
-            $user = Auth::user();  
-
-            return response()->json([
-                'success' => true,
-                'message' => 'User Login successfully',
-                'token' => $user->createToken('LaravelSanctumAuth')->plainTextToken,
-                'token_type' => 'Bearer',
-                'user' => $user
-            ]);
+  
+    public function login(Request $request)
+        {
+            $attempt = Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+    
+            if ($attempt) {
+                $user = Auth::user();
+    
+                return response()->json([
+                    'success' => true,
+                    'message' => 'User login successful',
+                    'token' => $user->createToken('LaravelSanctumAuth')->plainTextToken,
+                    'token_type' => 'Bearer',
+                    'user' => $user
+                ]);
+            } else {
+                return response()->json(['error' => 'Unauthorized'], 401);
+            }
         }
-        else {
-            return  response()->json('Unauthorised.', ['error' => 'Unauthorised', 'request' => $attemp]);
-        }
-    }
-
+  
 
 
     public function register(Request $request): Response
