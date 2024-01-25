@@ -26,8 +26,12 @@ class NewsController extends Controller
         }
         
         $news = News::create([
-            'title' =>$request->title,
-            'content' =>$request->content,
+            'title_uz' =>$request->title_uz,
+            'title_ru' =>$request->title_ru,
+            'title_en' =>$request->title_en,
+            'content_uz' =>$request->content_uz,
+            'content_ru' =>$request->content_ru,
+            'content_en' =>$request->content_en,
             'img' => $path ?? null,
         ]);
 

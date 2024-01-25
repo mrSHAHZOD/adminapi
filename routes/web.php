@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\BlogController;
+use App\Http\Controllers\admin\NewsController;
+use App\Http\Controllers\admin\ResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('admin/')->name('admin.')->middleware(['auth', 'verified'])->group(function(){
+    Route::get('/dashboard', function(){ return view('admin.layouts.dashboard'); });
+
+    Route::resources([
+        'blog' => BlogController::class,
+        'news' => NewsController::class,
+        'result' => ResultController::class,
+
+    ]);
+
+
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+

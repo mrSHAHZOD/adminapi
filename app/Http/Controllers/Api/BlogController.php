@@ -25,10 +25,14 @@ class BlogController extends Controller
             $name = $request ->file('img')->getClientOriginalName();
             $path = $request->file('img')->move('images', $name);
         }
-        
+
         $blog = Blog::create([
-            'title' =>$request->title,
-            'description' =>$request->description,
+            'title_uz' =>$request->title_uz,
+            'title_ru' =>$request->title_ru,
+            'title_en' =>$request->title_en,
+            'description_uz' =>$request->description_uz,
+            'description_ru' =>$request->description_ru,
+            'description_en' =>$request->description_en,
             'img' => $path ?? null,
         ]);
 
