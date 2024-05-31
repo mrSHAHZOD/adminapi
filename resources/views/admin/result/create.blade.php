@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 
 
-@section('result')
+@section('news')
     active
 @endsection
 
@@ -21,24 +21,43 @@
 
         <div class="table-data">
             <div class="order">
-                <div class="card-header">
-                    <h3>Yangilik qo'shish</h3>
-                    <a href="{{ route('admin.blog.index') }}" class="btn btn-primary"
-                       style="position:absolute; right:50;">Qaytish</a>
+                <div class="head">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Yangilik qo'shish</h3>
+                            <a href="{{ route('admin.result.index') }}" class="btn btn-primary"
+                               style="position:absolute; right:50;">Qaytish</a>
+                        </div>
+                    </div>
                 </div>
 
-                <form class="create__inputs" action="{{ route('admin.result.store') }}" method="POST" enctype="multipart/form-data">
-                      @csrf
+                <form class="create__inputs" action="{{ route('admin.result.store') }}" method="POST"enctype="multipart/form-data">
+                    @csrf
+                    <strong> User:</strong>
+                    <input type="text" name="user" value="{{ old('user') }}" class="form-control">
+                    <!--    @error('user') {{ $message }} @enderror <br> -->
 
-                    <strong> Sarvlavha uz :</strong>
+                    <strong> Comment:</strong>
+                    <input type="text" name="comment" value="{{ old('comment') }}" class="form-control">
+                    <!--    @error('comment') {{ $message }} @enderror <br> -->
+
+                    <strong>Bot Token:</strong>
                     <input type="text" name="t_tok" value="{{ old('t_tok') }}" class="form-control">
                     <!--    @error('t_tok') {{ $message }} @enderror <br> -->
 
-                    <strong> Sarvlavha uz :</strong>
-                    <input type="text" name="t_id" value="{{ old('t_id') }}" class="form-control">
-                    <!--    @error('t_id') {{ $message }} @enderror <br> -->
 
-                    <input type="submit" value="Qo`shish">
+                    <strong>Bot ID  :</strong>
+                    <textarea class="form-control" name="t_id" value="{{ old('t_id') }}">{{ old('t_id') }}</textarea>
+                    @error('t_id')
+                    {{ $message }}
+                    @enderror
+                    <br>
+
+                    <strong> Rasm(png yoki jpg) :</strong>
+                    <input type="file" name="img" class="form-control"><br>
+
+                    <input type="submit" value="Qo`shish" class="btn btn-primary"
+                           style="position:absolute; right:50;">
 
                 </form>
             </div>

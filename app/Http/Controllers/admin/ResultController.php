@@ -31,10 +31,18 @@ class ResultController extends Controller
     public function store(Request $request)
     {
         $requestData = $request->all();
+        $request->validate([
+            /* 'title_uz' => 'required', */
+            'img' => 'mimes:png,jpg'
+        ]);
+
+        if ($request->hasFile('img'))
+            $requestData['img'] = $this->upload_file();
 
         Result::create($requestData);
 
         return redirect()->route('admin.result.index')->with('success', 'Yangilik qo`shildi');
+
 
     }
 
@@ -59,8 +67,16 @@ class ResultController extends Controller
      */
     public function update(Request $request, Result $result)
     {
-        $result = $request->all();
 
+        $requestData = $request->all();
+
+        if ($request->hasFile('img')) {
+            $this->unlink_file($result);
+
+            $requestData['img'] = $this->upload_file();
+        }
+
+        $result->update($requestData);
         return redirect()->route('admin.result.index')->with('success', 'Ma`lumot tahrirlandi');
     }
 
@@ -73,7 +89,25 @@ class ResultController extends Controller
 
         return redirect()->route('admin.result.index')->with('danger', 'O`chirildi !');
     }
+
+    public function unlink_file(Result $result)
+    {
+        if (isset($result->img) && file_exists(public_path('/images/' . $result->img))) {
+            unlink(public_path('/images/' . $result->img));
+        }
+    }
+
+    public function upload_file()
+    {
+        $file = request()->file('img');
+        $fileName = time() . '-' . $file->getClientOriginalName();
+        $file->move('images/', $fileName);
+        return $fileName;
+    }
 }
+
+
+
 
 
 

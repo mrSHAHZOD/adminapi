@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 use  App\Models\News;
 class NewsController extends Controller
@@ -21,17 +22,13 @@ class NewsController extends Controller
     public function store(Request $request)
     {
         if($request->hasFile('img')){
-            $name = $request ->file('img')->getClientOriginalName();
-            $path = $request->file('img')->move('images', $name);
-        }
-        
+        $name = $request ->file('img')->getClientOriginalName();
+        $path = $request->file('img')->move('images', $name);
+    }
+
         $news = News::create([
             'title_uz' =>$request->title_uz,
-            'title_ru' =>$request->title_ru,
-            'title_en' =>$request->title_en,
-            'content_uz' =>$request->content_uz,
-            'content_ru' =>$request->content_ru,
-            'content_en' =>$request->content_en,
+            'description_uz' =>$request->description_uz,
             'img' => $path ?? null,
         ]);
 

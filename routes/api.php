@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\Api\ContactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\BlogController;
 use App\Http\Controllers\Api\NewsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Api\ResultController;
+use App\Http\Controllers\Api\TeamController;
 use App\Http\Controllers\AuthSessionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,4 +49,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('blog',BlogController::class );
 Route::apiResource('news',NewsController::class );
 Route::apiResource('result',ResultController::class);
+Route::apiResource('team',TeamController::class);
+Route::apiResource('contact',ContactController::class);
 

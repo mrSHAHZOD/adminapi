@@ -21,10 +21,17 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->hasFile('img')){
+            $name = $request ->file('img')->getClientOriginalName();
+            $path = $request->file('img')->move('images', $name);
+        }
 
         $result = Result::create([
+            'user' =>$request->user,
+            'comment' =>$request->comment,
             't_tok' =>$request->t_tok,
             't_id' =>$request->t_id,
+            'img' => $path ?? null,
         ]);
 
         return response(['success' => 'Yangilik muvofaqiyatli qoshildi.']);

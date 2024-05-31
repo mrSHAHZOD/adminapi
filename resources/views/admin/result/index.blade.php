@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 
-@section('results')
+@section('result')
 active
 @endsection
 
@@ -28,8 +28,11 @@ active
                       <th class="text-center">
                         #
                       </th>
-                      <th>t Token</th>
-                      <th>T ID</th>
+                        <th>User</th>
+                        <th>Comment</th>
+                      <th>Bot Token</th>
+                      <th>Bot ID</th>
+                        <th>Rasim</th>
                       <th>Vaqt</th>
 
                       <th>Action</th>
@@ -47,8 +50,13 @@ active
                         <td>
                           {{ ++$loop->index }}
                         </td>
+                          <td>{{ $results->user }}</td>
+                          <td>{{ $results->comment }}</td>
                         <td>{{ $results->t_tok }}</td>
                         <td>{{ $results->t_id }}</td>
+                          <td>
+                              <img src="/images/{{ $results->img }}" alt="" width="70px">
+                          </td>
 				                  <td><b>{{ $results->created_at }}</b></td>
                         <td>
 

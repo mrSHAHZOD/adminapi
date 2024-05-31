@@ -1,6 +1,6 @@
 @extends('admin.layouts.layout')
 
-@section('blogs')
+@section('blog')
     active
 @endsection
 

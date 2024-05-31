@@ -26,6 +26,7 @@
                     <div class="card">
                         <div class="card-header">
                             <h4>Edit</h4>
+                            <a href="{{ route('admin.blog.index') }}" class="btn btn-primary" style="position:absolute; right:50;">Back</a>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('admin.blog.update', $blog->id) }}" method="POST"
@@ -33,48 +34,19 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sarlavha</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sarlavha </label>
                                     <div class="col-sm-12 col-md-7">
                                         <input type="text" class="form-control" name="title_uz"
                                             value="{{ $blog->title_uz }}">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sarlavha</label>
-                                    <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="title_ru"
-                                            value="{{ $blog->title_ru }}">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sarlavha</label>
-                                    <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="title_en"
-                                            value="{{ $blog->title_en }}">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sarlavha</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Description </label>
                                     <div class="col-sm-12 col-md-7">
                                         <input type="text" class="form-control" name="description_uz"
                                                value="{{ $blog->description_uz }}">
                                     </div>
                                 </div>
-                                <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sarlavha</label>
-                                    <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="description_ru"
-                                               value="{{ $blog->description_ru }}">
-                                    </div>
-                                </div>
-                                <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Sarlavha</label>
-                                    <div class="col-sm-12 col-md-7">
-                                        <input type="text" class="form-control" name="description_en"
-                                               value="{{ $blog->description_en}}">
-                                    </div>
-                                </div>
-
 
                                 <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>

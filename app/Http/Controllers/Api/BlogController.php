@@ -28,11 +28,7 @@ class BlogController extends Controller
 
         $blog = Blog::create([
             'title_uz' =>$request->title_uz,
-            'title_ru' =>$request->title_ru,
-            'title_en' =>$request->title_en,
             'description_uz' =>$request->description_uz,
-            'description_ru' =>$request->description_ru,
-            'description_en' =>$request->description_en,
             'img' => $path ?? null,
         ]);
 
@@ -44,8 +40,8 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        /* return $blog; */
-        return new BlogResource($blog);
+        return $blog;
+       /*  return new BlogResource($blog); */
     }
 
     /**

@@ -38,24 +38,10 @@
                         <li><a href="#" class="nav-link nav-link-lg fullscreen-btn">
                                 <i data-feather="maximize"></i>
                             </a></li>
-                        <li>
-                            <form class="form-inline mr-auto">
-                                <div class="search-element">
-                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search"
-                                        data-width="200">
-                                    <button class="btn" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                </div>
-                            </form>
-                        </li>
+
                     </ul>
                 </div>
-                <div>
-                    <a href="#">UZ</a>
-                    <a href="#">RU</a>
-                    <a href="#">EN</a>
-                </div>
+
                 <ul class="navbar-nav navbar-right">
 
                         <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
@@ -118,8 +104,8 @@
                         <div class="dropdown-menu dropdown-menu-right pullDown">
 
                             <div class="dropdown-divider"></div>
-                            <form action="logout" method="POST">
-                                @csrf
+                           <form action="{{ route('logout') }}" method="POST">
+                        @csrf
                                 <button class="dropdown-item has-icon text-danger"> <i
                                         class="fas fa-sign-out-alt"></i> Chqiish</button>
                             </form>
@@ -136,10 +122,7 @@
                     </div>
                     <ul class="sidebar-menu">
 
-                        <li class="dropdown @yield('dashboard')">
-                            <a href="/a-panel" class="nav-link"><i
-                                    data-feather="monitor"></i><span>Dashboard</span></a>
-                        </li>
+
                         <li class="dropdown @yield('blog')">
                             <a href="{{ route('admin.blog.index') }}">
                                 <i data-feather="briefcase"></i><span>Blog</span></a>
@@ -159,7 +142,7 @@
             </div>
             <!-- Main Content -->
             <div class="main-content">
-                @yield('content');
+                @yield('content')
                 <div class="settingSidebar">
                     <a href="javascript:void(0)" class="settingPanelToggle"> <i class="fa fa-spin fa-cog"></i>
                     </a>
@@ -256,13 +239,7 @@
                     </div>
                 </div>
             </div>
-            <footer class="main-footer">
-                <div class="footer-left">
-                    <a href="templateshub.net">Templateshub</a></a>
-                </div>
-                <div class="footer-right">
-                </div>
-            </footer>
+
         </div>
     </div>
     <!-- General JS Scripts -->

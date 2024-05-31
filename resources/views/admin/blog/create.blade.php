@@ -34,43 +34,17 @@
                 <form class="create__inputs" action="{{route('admin.blog.store')}}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
-                    <strong> Sarvlavha uz :</strong>
+                    <strong> Sarvlavha  :</strong>
                     <input type="text" name="title_uz" value="{{ old('title_uz') }}" class="form-control">
                     @error('title_uz')
                         {{ $message }}
                     @enderror <br>
-
-                    <strong> Sarvlavha ru :</strong>
-                    <input type="text" name="title_ru" value="{{ old('title_ru') }}" class="form-control">
-                    @error('title_ru')
-                        {{ $message }}
-                    @enderror <br>
-
-                    <strong> Sarvlavha en :</strong>
-                    <input type="text" name="title_en" value="{{ old('title_en') }}" class="form-control">
-                    @error('title_en')
-                        {{ $message }}
-                    @enderror <br>
-
-                    <strong> Ma'lumot uz :</strong>
+                    <strong> Ma'lumot  :</strong>
                     <textarea class="form-control" name="description_uz" value="{{ old('description_uz') }}">{{ old('description_uz') }}</textarea>
                     @error('description_uz')
                         {{ $message }}
                     @enderror
                     <br>
-                    <strong> Ma'lumot uz :</strong>
-                    <textarea class="form-control" name="description_ru" value="{{ old('description_ru') }}">{{ old('description_ru') }}</textarea>
-                    @error('description_ru')
-                        {{ $message }}
-                    @enderror
-                    <br>
-                    <strong> Ma'lumot uz :</strong>
-                    <textarea class="form-control" name="description_en" value="{{ old('description_en') }}">{{ old('description_en') }}</textarea>
-                    @error('description_en')
-                        {{ $message }}
-                    @enderror
-                    <br>
-
                     <strong> Rasm(png yoki jpg) :</strong>
                     <input type="file" name="img" class="form-control"><br>
 

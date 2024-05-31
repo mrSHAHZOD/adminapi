@@ -13,12 +13,17 @@ return new class extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
+            $table->string('user')->nullable();
+            $table->string('comment')->nullable();
+            $table->string('img')->nullable();
             $table->string('t_tok')->nullable();
             $table->string('t_id')->nullable();
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(\DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-       
+
         });
+
+
     }
 
     /**

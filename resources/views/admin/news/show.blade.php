@@ -21,13 +21,16 @@ active
                 <table class="table table-striped" id="table-1">
                   <thead>
                   <tr>
-                        <td>Ismi : </td>
+                        <td>Sarlavha : </td>
                         <td><b>{{ $news->title_uz }}</b></td>
                     </tr>
+
                      <tr>
-                        <td>Ismi : </td>
+                        <td>Description : </td>
                         <td><b>{{ $news->description_uz }}</b></td>
                     </tr>
+
+
                     <tr>
                         <td>Rasmi : </td>
                         <td>
