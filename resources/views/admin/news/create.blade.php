@@ -38,7 +38,7 @@
                     <!--    @error('title_uz') {{ $message }} @enderror <br> -->
 
 
-              <strong>Description  :</strong>
+              <strong>Malumot  :</strong>
                     <textarea class="form-control" name="description_uz" value="{{ old('description_uz') }}">{{ old('description_uz') }}</textarea>
                     @error('description_uz')
                         {{ $message }}

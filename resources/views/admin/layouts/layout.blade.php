@@ -123,20 +123,24 @@
                     <ul class="sidebar-menu">
 
 
-                        <li class="dropdown @yield('blog')">
-                            <a href="{{ route('admin.blog.index') }}">
-                                <i data-feather="briefcase"></i><span>Blog</span></a>
+                        <li class="dropdown @yield('team')">
+                            <a href="{{ route('admin.team.index') }}">
+                                <i data-feather="briefcase"></i><span>Jamoa</span></a>
                         </li>
 
                         <li class="dropdown @yield('news')">
                             <a href="{{ route('admin.news.index') }}"><i
                                     data-feather="briefcase"></i><span>Yangiliklar</span></a>
                         </li>
-                        <li class="dropdown @yield('result')">
-                            <a href="{{ route('admin.result.index') }}"><i
-                                    data-feather="briefcase"></i><span>results</span></a>
-                        </li>
 
+                        <li class="dropdown @yield('contact')">
+                            <a href="{{ route('admin.contact.index') }}"><i
+                                    data-feather="briefcase"></i><span>Aloqa</span></a>
+                            </li>
+                            <li class="dropdown @yield('resume')">
+                                <a href="{{ route('admin.resume.index') }}"><i
+                                        data-feather="briefcase"></i><span>Resume</span></a>
+                                </li>
                     </ul>
                 </aside>
             </div>

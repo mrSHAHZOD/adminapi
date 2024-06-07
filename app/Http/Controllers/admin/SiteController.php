@@ -13,6 +13,6 @@ class SiteController extends Controller
    }
    public function index()
    {
-    return view('admin.blog.index');
+    return view('admin.team.index');
    }
 }

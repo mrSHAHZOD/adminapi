@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
 use Illuminate\Http\Request;
 use  App\Models\News;
 class NewsController extends Controller
@@ -19,11 +18,11 @@ class NewsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request,News $news)
     {
         if($request->hasFile('img')){
         $name = $request ->file('img')->getClientOriginalName();
-        $path = $request->file('img')->move('images', $name);
+        $path = $request->file('img')->move( $name);
     }
 
         $news = News::create([

@@ -26,7 +26,7 @@ active
                     </tr>
 
                      <tr>
-                        <td>Description : </td>
+                        <td>Malumot : </td>
                         <td><b>{{ $news->description_uz }}</b></td>
                     </tr>
 

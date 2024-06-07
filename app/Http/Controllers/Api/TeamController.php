@@ -22,7 +22,7 @@ class TeamController extends Controller
     {
         if($request->hasFile('img')){
             $name = $request ->file('img')->getClientOriginalName();
-            $path = $request->file('img')->move('images', $name);
+            $path = $request->file('img')->move( $name);
         }
 
             $team = Team::create([
