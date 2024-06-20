@@ -55,6 +55,29 @@
                   <input type="text" class="form-control" name="patronymic" value="{{ $resume->patronymic }}">
                 </div>
               </div>
+
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Yoshi: </label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="age" value="{{ $resume->age }}">
+                </div>
+              </div>
+
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Millati : </label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="nationality" value="{{ $resume->nationality }}">
+                </div>
+              </div>
+
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Manzili</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="Address" value="{{ $resume->Address }}">
+                </div>
+              </div>
+
+
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Telefoni</label>
                 <div class="col-sm-12 col-md-7">
@@ -73,6 +96,14 @@
                   <input type="text" class="form-control" name="level" value="{{ $resume->level }}">
                 </div>
               </div>
+
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Qo`shimcha Til bilish darajasi</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="text" class="form-control" name="level2" value="{{ $resume->level2 }}">
+                </div>
+              </div>
+
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mutaxasislik</label>
                 <div class="col-sm-12 col-md-7">
@@ -86,6 +117,23 @@
                 </div>
               </div>
 
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Malumotlar</label>
+                <div class="col-sm-12 col-md-7">
+                    <textarea class="ckeditor form-control" name="html_code" value="{{  $resume->html_code }}">{{ $resume->html_code }}</textarea>
+                </div>
+              </div>
+
+              {{-- qoshish --}}
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Ish faoliyatidagi rasim:</label>
+                <div class="col-sm-12 col-md-7">
+                  <div id="image-preview" class="image-preview">
+                    <label for="image-upload" id="image-label">Choose File</label>
+                    <input type="file" name="imge" value="{{ $resume->imge }}" id="image-upload" />
+                  </div>
+                </div>
+              </div>
 
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Rasimlar</label>
@@ -95,9 +143,6 @@
                     <input type="file" name="img" value="{{ $resume->img }}" id="image-upload" />
                   </div>
                 </div>
-              </div>
-
-
               </div>
               <div class="form-group row mb-4">
                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>

@@ -1,141 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume</title>
-    <link rel="stylesheet" href="style.css">
-
+    <title>Lebenslauf - Sodiqjon Sattarov</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+            color: #333;
         }
 
-        .resume {
-            max-width: 800px;
-            margin: 0 auto;
+        .container {
+            display: flex;
+            max-width: 1600px;
+            margin: 10px auto;
             background: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
-        .profile-picture {
+        .sidebar {
+            background: #154c79;
+            color: #fff;
+            padding: 20px;
+            width: 30%;
+            box-sizing: border-box;
+        }
+
+        .main-content {
+            padding: 20px;
+            width: 70%;
+            box-sizing: border-box;
+        }
+
+        .header {
             text-align: center;
             margin-bottom: 20px;
         }
 
-        .profile-picture img {
+        .header img {
             width: 150px;
             height: 150px;
-            object-fit: cover;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
         }
 
-        header {
-            margin-bottom: 20px;
+        .personal-info p, .contact-info p, .languages p {
+            margin-bottom: 10px;
         }
 
-        header h1 {
-            font-size: 2em;
-            margin-left: 100px;
-            color: #333;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        .experience h3, .main-content h1, .main-content h2 {
+            margin-bottom: 10px;
+            color: #154c79;
         }
 
-
-
-        section {
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            color: #333;
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 5px;
-            text-align: center;
-        }
-
-        .job {
-            margin-bottom: 15px;
-        }
-
-        .job h3 {
-            margin: 0;
-            font-size: 1.2em;
-            color: #333;
-        }
-
-
-        ul {
-            list-style-type: disc;
-            margin: 10px 0 10px 20px;
+        .experience ul {
+            list-style: none;
             padding: 0;
         }
 
-        ul li {
-            margin-bottom: 5px;
+        .experience ul li {
+            margin-bottom: 15px;
         }
 
-        p {
-            margin-left: 100px;
-            color: #777;
-        }
-        button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-
-        button a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        button a:hover {
-            text-decoration: underline;
+        .profile-phot {
+            width: 80%;
+            height: auto;
+            margin-left: 85px;
         }
     </style>
 </head>
-
 <body>
-    <div class="resume">
-        <div class="profile-picture">
-            <img style="width: 150px; height: 150px; object-fit: cover; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); margin-bottom: 20px; text-align: center;"
-                src="{{ asset('images/' . $item->img) }}" alt="Profile Picture">
-        </div>
-        <header>
-            <h1>Ismi: <span
-                    style="margin-left: 40px; font-weight: 400; color: rgb(95, 99, 99);">{{ $item->name }}</span></h1>
-            <h1 style="margin-top: -30px;">Familiyasi: <span
-                    style="margin-left: 40px; font-weight: 400; color: rgb(95, 99, 99);">{{ $item->surname }}</span>
-            </h1>
-            <h1 style="margin-top: -30px;">Otasining ismi: <span
-                    style="margin-left: 40px; font-weight: 400; color: rgb(95, 99, 99);">{{ $item->patronymic }}</span>
-            </h1>
-            <h1 style="margin-top: 50px;">Pochta manzili: <span
-                    style="margin-left: 40px; font-weight: 400; color: rgb(95, 99, 99);">{{ $item->email }}</span></h1>
-            <h1 style="margin-top: -30px;">Til Bilish Darajasi: <span
-                    style="margin-left: 40px; font-weight: 400; color: rgb(95, 99, 99);">{{ $item->level }}</span></h1>
-            <h1 style="margin-top: -30px;">Mutaxassislik: <span
-                    style="margin-left: 40px; font-weight: 400; color: rgb(95, 99, 99);">{{ $item->task }}</span></h1>
-                    <button type="button"><a href="{{ url('items/' . $item->id . '/pdf') }}">Download PDF</a></button>
-        </header>
-        <section class="experience" style="margin-top: 100px;">
-            <h2 style="text-align: center;">Bizga aloqaga chiqing</h2>
-            <div class="job">
-                <p style="margin-left: 250px;">+998(99)995-50-36 | +998(99)534-43-44</p>
+    <div class="container">
+        <div class="sidebar">
+            <div class="header">
+                <img src="{{ public_path('images/' . $item->img) }}" alt="Sodiqjon Sattarov">
             </div>
-        </section>
+            <div class="personal-info">
+                <p><strong>Name:</strong> {{ $item->name }}</p>
+                <p><strong>Nachname:</strong> {{ $item->surname }}</p>
+                <p><strong>Name des Vaters:</strong> {{ $item->patronymic }}</p>
+            </div>
+            <div class="contact-info">
+                <h3>KONTAKT</h3>
+                <p><strong>Telefon:</strong> +998(99)995-50-36</p>
+                <p><strong>E-Mail:</strong> admin@technoconsult.uz</p>
+                <p><strong>Adresse:</strong> {{ $item->Address }}</p>
+            </div>
+            <div class="languages">
+                <p>Deutsch: {{ $item->level }}</p>
+                <p>Zusätzliche Sprachkenntnisse: {{ $item->level2 }}</p>
+            </div>
+        </div>
+        <div class="main-content">
+            <h1>Spezialität</h1>
+            <h2>{{ $mappedTask }}</h2>
+            <div class="experience">
+                <h3>Berufserfahrung</h3>
+                <ul>
+                    {!! $item->html_code !!}
+                </ul>
+            </div>
+            <div>
+                <img src="{{ public_path('images/' . $item->imge) }}" class="profile-phot">
+            </div>
+        </div>
     </div>
 </body>
-
 </html>

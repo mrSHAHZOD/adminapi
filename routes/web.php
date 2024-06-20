@@ -53,6 +53,7 @@ Route::get('/', function () {
 Route::get('items/{id}', [ItemController::class, 'show']);
 Route::get('items/{id}/pdf', [ItemController::class, 'downloadPDF']);
 
+Route::get('items/{id}/resumet', [ItemController::class, 'downloadPDF']);
 //admin
 
 Route::prefix('admin/')->name('admin.')->middleware(['auth', 'verified'])->group(function(){

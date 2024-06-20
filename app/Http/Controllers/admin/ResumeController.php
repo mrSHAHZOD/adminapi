@@ -19,6 +19,7 @@ class ResumeController extends Controller
         return view('admin.resume.index', compact('resume'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      */
@@ -38,7 +39,8 @@ class ResumeController extends Controller
 
         $request->validate([
             // 'title_uz' => 'required',
-            'img' => 'mimes:png,jpg,pdf'
+            'img' => 'mimes:png,jpg,pdf',
+            'imge' => 'mimes:png,jpg,pdf'
         ]);
 
         $requestData = $request->all();
@@ -46,11 +48,19 @@ class ResumeController extends Controller
         if($request->hasFile('img')) {
             $requestData['img'] = $this->handleFileUpload($request, 'img', 'images/');
         }
+        if($request->hasFile('imge')) {
+            $requestData['imge'] = $this->handleFileUpload($request, 'imge', 'images/');
+        }
 
         Resume::create($requestData);
 
         return redirect()->route('admin.resume.index')->with('success', 'Yangilik qo`shildi');
     }
+
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -79,7 +89,9 @@ class ResumeController extends Controller
     public function update(Request $request, Resume $resume)
     {
         $request->validate([
-            'img' => 'mimes:png,jpg,pdf'
+            'img' => 'mimes:png,jpg,pdf',
+            'imge' => 'mimes:png,jpg,pdf'
+
         ]);
 
         $requestData = $request->all();
@@ -88,10 +100,17 @@ class ResumeController extends Controller
             $this->handleFileDeletion($resume->img, 'images/');
             $requestData['img'] = $this->handleFileUpload($request, 'img', 'images/');
         }
+        if($request->hasFile('imge')) {
+            $this->handleFileDeletion($resume->img2, 'images/');
+            $requestData['imge'] = $this->handleFileUpload($request, 'imge', 'images/');
+        }
+
         $resume->update($requestData);
 
         return redirect()->route('admin.resume.index')->with('success', 'Ma`lumot tahrirlandi');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -99,6 +118,7 @@ class ResumeController extends Controller
     public function destroy(Resume $resume)
     {
         $this->handleFileDeletion($resume->img, 'images/');
+        $this->handleFileDeletion($resume->imge, 'images/');
         $resume->delete();
 
         return redirect()->route('admin.resume.index')->with('danger', 'O`chirildi !');
@@ -114,6 +134,7 @@ class ResumeController extends Controller
         }
     }
 
+
     /**
      * Handle file upload.
      */
@@ -125,3 +146,4 @@ class ResumeController extends Controller
         return $fileName;
     }
 }
+

@@ -34,7 +34,19 @@ active
                         <td><b>{{ $resume->patronymic }}</b></td>
                     </tr>
                     <tr>
-                        <td>phone : </td>
+                        <td>Yoshi: </td>
+                        <td><b>{{ $resume->age }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Millati : </td>
+                        <td><b>{{ $resume->nationality }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Manzil : </td>
+                        <td><b>{{ $resume->Address }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Telefoni : </td>
                         <td><b>{{ $resume->phone }}</b></td>
                     </tr>
                     <tr>
@@ -46,12 +58,26 @@ active
                         <td><b>{{ $resume->level }}</b></td>
                     </tr>
                     <tr>
+                        <td> Qoshimcha Til bilish Darajasi : </td>
+                        <td><b>{{ $resume->level2 }}</b></td>
+                    </tr>
+                    <tr>
                         <td>Mutaxasislik : </td>
                         <td><b>{{ $resume->task }}</b></td>
                     </tr>
                     <tr>
                         <td>Qoshimcha Mutaxasislik : </td>
                         <td><b>{{ $resume->specialty }}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Malumotlar:  : </td>
+                        <td><b>{!! $resume->html_code !!}</b></td>
+                    </tr>
+                    <tr>
+                        <td>Ish faoliyatidagi rasim: </td>
+                        <td>
+                          <img alt="image" src="/images/{{ $resume->imge }}" width="70">
+                        </td>
                     </tr>
 
                     <tr>

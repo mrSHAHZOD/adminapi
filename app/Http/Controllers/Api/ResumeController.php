@@ -27,6 +27,7 @@ class ResumeController extends Controller
          $request->validate([
              // Добавляем правила валидации для других полей, если это необходимо
              'img' => 'required|mimes:png,jpg,pdf',
+             'imge' => 'nullable|mimes:png,jpg,pdf',
          ]);
 
          // Обрабатываем загрузку изображения
@@ -40,6 +41,17 @@ class ResumeController extends Controller
              // Получаем относительный путь к файлу
              $path = $name;
          }
+          // Handle image upload for img2
+        if ($request->hasFile('imge')) {
+            // Get original file name
+            $name2 = $request->file('imge')->getClientOriginalName();
+
+            // Move file to 'images' folder and get file path
+            $path2 = $request->file('imge')->move('images', $name2);
+
+            // Get relative file path
+            $path2 = $name2;
+        }
 
          // Создаем запись в базе данных
          $resume = Resume::create([
@@ -47,11 +59,17 @@ class ResumeController extends Controller
              'surname' => $request->surname,
              'patronymic' => $request->patronymic,
              'level' => $request->level,
+             'level2' => $request->level2,
              'phone' => $request->phone,
              'task' => $request->task,
              'email' => $request->email,
              'specialty' => $request->specialty,
+             'html_code' => $request->html_code,
+             'nationality' => $request->nationality,
+             'age' => $request->age,
+             'Address' => $request->Address,
              'img' => $path ?? null,
+             'imge' => $path2 ?? null,
          ]);
 
          // Возвращаем ответ
